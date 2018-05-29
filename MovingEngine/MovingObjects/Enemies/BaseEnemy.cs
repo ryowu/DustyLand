@@ -13,6 +13,7 @@ namespace MovingEngine.MovingObjects.Enemies
 	{
 		private int score = 0;
 		private int exp = 0;
+		private int coin = 0;
 
 		public BaseEnemy()
 		{
@@ -27,10 +28,12 @@ namespace MovingEngine.MovingObjects.Enemies
 
 			this.score = 1;
 			this.exp = 2;
+			this.coin = 1;
 		}
 
 		public int Score { get => score; set => score = value; }
 		public int Exp { get => exp; set => exp = value; }
+		public int Coin { get => coin; set => coin = value; }
 
 		public void MoveTo(Point target)
 		{

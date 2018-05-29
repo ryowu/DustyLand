@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="484.957" Width="1091.694" FontFamily="Microsoft YaHei" FontSize="10" >
     <Grid>
-        <Canvas x:Name="mainCanvas" Background="#FFFBFBFB" MouseDown="mainCanvas_MouseDown" MouseUp="mainCanvas_MouseUp">
-            <local:BulletsCounter x:Name="bulletsCount" Height="26" Canvas.Left="10" Canvas.Top="10" Width="313" FontSize="14" Panel.ZIndex="101" Margin="0"/>
+        <Canvas x:Name="mainCanvas" Background="#FFFBFBFB" MouseDown="mainCanvas_MouseDown" MouseUp="mainCanvas_MouseUp" Margin="0,30,0,0">
             <GroupBox x:Name="pnlPlayer" Header="Player1" Height="434" Canvas.Left="10" Canvas.Top="87" Width="313" Background="#FFF1F1F1" Panel.ZIndex="200">
                 <Grid >
                     <Label Content="体力：" HorizontalAlignment="Left" Margin="15,76,0,0" VerticalAlignment="Top" FontSize="14"/>
@@ -20,13 +19,17 @@
                     <Button Margin="281,0,0,394" Content="X" Click="btnCloseBoard_Click"/>
                 </Grid>
             </GroupBox>
-            <Label x:Name="lblHp" Content="" Canvas.Left="337" Canvas.Top="10" Width="313" Background="#FF98D857" Height="11"/>
-            <Border x:Name="borderPlayerHp" BorderBrush="Black" BorderThickness="1" Height="11" Canvas.Left="337" Canvas.Top="10" Width="313" Panel.ZIndex="200"/>
-            <Label Content="金币:" Canvas.Left="664" Canvas.Top="10" FontSize="12"/>
-            <Label Content="0" Canvas.Left="701" Canvas.Top="10" Width="120" FontSize="12"/>
-            <Label Content="分数:" Canvas.Left="856" Canvas.Top="10" FontSize="12"/>
-            <Label Content="0" Canvas.Left="893" Canvas.Top="10" Width="120" FontSize="12"/>
         </Canvas>
+        <Grid x:Name="gridHeader" Background="#FFE8E8E8" Height="30" VerticalAlignment="Top">
+            <local:BulletsCounter x:Name="bulletsCount" FontSize="14" Panel.ZIndex="101" Margin="10,0,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="313"/>
+            <Border x:Name="borderPlayerHp" BorderBrush="Black" BorderThickness="1" Panel.ZIndex="1" Margin="328,10,0,0" HorizontalAlignment="Left" Width="313" Height="11" VerticalAlignment="Top">
+                <Label x:Name="lblHp" Content="" Background="#FF98D857" Margin="0" HorizontalAlignment="Left" Width="313" Height="11" VerticalAlignment="Top"/>
+            </Border>
+            <Label Content="金币:" FontSize="12" Margin="659,0,0,0" HorizontalAlignment="Left" Width="37" Height="26" VerticalAlignment="Top"/>
+            <Label x:Name="lblCoin" Content="0" FontSize="12" Margin="696,0,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+            <Label Content="分数:" FontSize="12" Margin="851,0,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="37"/>
+            <Label x:Name="lblScore" Content="0" FontSize="12" Margin="888,0,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="139"/>
+        </Grid>
 
     </Grid>
 </Window>

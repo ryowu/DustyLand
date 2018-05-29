@@ -32,6 +32,8 @@ namespace MovingEngine.MovingObjects
 		private int level = 1;
 		private int currentLevelExp = 12;
 
+		private int score = 0;
+
 		public Player(double width_r, double height_r)
 		{
 			this.width_range = width_r;
@@ -65,14 +67,16 @@ namespace MovingEngine.MovingObjects
 			set
 			{
 				exp = value;
-				if (exp > currentLevelExp)
+				if (exp > CurrentLevelExp)
 				{
 					this.level++;
-					this.currentLevelExp = this.level * 12 + this.level * this.level;
+					this.CurrentLevelExp = this.level * 12 + this.level * this.level;
 				}
 			}
 		}
 		public int Level { get => level; set => level = value; }
+		public int Score { get => score; set => score = value; }
+		public int CurrentLevelExp { get => currentLevelExp; set => currentLevelExp = value; }
 
 		public override void Move()
 		{

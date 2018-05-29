@@ -52,13 +52,13 @@ namespace MovingEngine
 		{
 			InitializeComponent();
 
-			mainTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
+			mainTimer.Interval = new TimeSpan(0, 0, 0, 0, 2000);
 			mainTimer.Tick += MainTimer_Tick;
 			mainTimer.Start();
 			CompositionTarget.Rendering += CompositionTarget_Rendering;
 
 			this.Width = MAP_WIDTH;
-			this.Height = MAP_HEIGHT;
+			this.Height = MAP_HEIGHT + gridHeader.Height;
 
 			bulletsCount.BulletsCount = player1.Bullets;
 
@@ -144,8 +144,14 @@ namespace MovingEngine
 			RefreshMovingObjects(movingEnemies);
 			RefreshMovingObjects(movingExplosions);
 			RefreshMovingObjects(players);
+			RefreshHeaderPanel();
+		}
 
+		private void RefreshHeaderPanel()
+		{
 			lblHp.Width = (player1.Hp / player1.MaxHp) * borderPlayerHp.Width;
+			lblCoin.Content = player1.Coin;
+			lblScore.Content = player1.Score;
 		}
 
 		private void RefreshMovingObjects(List<IMovingElement> items)
@@ -222,6 +228,11 @@ namespace MovingEngine
 								exp.Pos = b.Pos;
 								movingExplosions.Add(exp);
 								mainCanvas.Children.Add(exp.UiImage);
+
+								//Get coin and exp
+								player1.Exp += b.Exp;
+								player1.Coin += b.Coin;
+								player1.Score += b.Score;
 							}
 						}
 					});
@@ -253,8 +264,8 @@ namespace MovingEngine
 
 		private void RefreshPlayerBoard()
 		{
-			lblPlayerHp.Content = player1.Hp;
-			lblPlayerExp.Content = player1.Exp;
+			lblPlayerHp.Content = player1.Hp.ToString("F");
+			lblPlayerExp.Content = string.Format("{0}/{1}", player1.Exp, player1.CurrentLevelExp);
 			lblPlayerLevel.Content = player1.Level;
 		}
 		#endregion
