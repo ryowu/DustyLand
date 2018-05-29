@@ -11,6 +11,9 @@ namespace MovingEngine.MovingObjects.Enemies
 {
 	public class BaseEnemy : LivingElement, IBaseEnemy
 	{
+		private int score = 0;
+		private int exp = 0;
+
 		public BaseEnemy()
 		{
 			this.speed = 0.3;
@@ -21,7 +24,13 @@ namespace MovingEngine.MovingObjects.Enemies
 			this.uiImage.Width = 50;
 			this.uiImage.Height = 50;
 			Canvas.SetZIndex(this.uiImage, Layers.FRONT);
+
+			this.score = 1;
+			this.exp = 2;
 		}
+
+		public int Score { get => score; set => score = value; }
+		public int Exp { get => exp; set => exp = value; }
 
 		public void MoveTo(Point target)
 		{

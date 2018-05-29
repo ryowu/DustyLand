@@ -25,11 +25,19 @@ namespace MovingEngine.MovingObjects
 		private int damagingResistTime = 70;
 		private int damagingResistTimeMax = 70;
 
+		private double hpRecover = 0.001;
+
+		private int coin = 0;
+		private int exp = 0;
+		private int level = 1;
+		private int currentLevelExp = 12;
+
 		public Player(double width_r, double height_r)
 		{
 			this.width_range = width_r;
 			this.height_range = height_r;
 			this.hp = 32;
+			this.maxHp = 32;
 			this.atk = 5;
 			this.def = 3;
 			this.speed = 1.5;
@@ -50,9 +58,28 @@ namespace MovingEngine.MovingObjects
 		public int ReloadTime { get => reloadTime; set => reloadTime = value; }
 		public int MaxReloadTime { get => maxReloadTime; set => maxReloadTime = value; }
 		public bool IsDamaging { get => isDamaging; set => isDamaging = value; }
+		public int Coin { get => coin; set => coin = value; }
+		public int Exp
+		{
+			get => exp;
+			set
+			{
+				exp = value;
+				if (exp > currentLevelExp)
+				{
+					this.level++;
+					this.currentLevelExp = this.level * 12 + this.level * this.level;
+				}
+			}
+		}
+		public int Level { get => level; set => level = value; }
 
 		public override void Move()
 		{
+			//HP recover
+			this.hp = Utility.UpdateLimitedNumber(this.hp + this.hpRecover, this.maxHp);
+
+			//Damage resist
 			if (IsDamaging)
 			{
 				if (damagingResistTime > 0)
@@ -68,6 +95,8 @@ namespace MovingEngine.MovingObjects
 				}
 			}
 
+
+			//Limit move into map area
 			Point newp = this.pos + this.vec;
 			if (newp.X < 30 || newp.X > width_range - 30 || newp.Y < 30 || newp.Y > height_range - 60)
 				return;

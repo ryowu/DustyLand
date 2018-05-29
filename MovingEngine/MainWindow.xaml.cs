@@ -40,14 +40,21 @@ namespace MovingEngine
 
 		private bool isReloading = false;
 
-		private const double MAP_WIDTH = 1024;
+		private const double MAP_WIDTH = 1200;
 		private const double MAP_HEIGHT = 700;
-		
+
+
+		private DispatcherTimer mainTimer = new DispatcherTimer();
+
+
 
 		public MainWindow()
 		{
 			InitializeComponent();
 
+			mainTimer.Interval = new TimeSpan(0, 0, 0, 0, 3000);
+			mainTimer.Tick += MainTimer_Tick;
+			mainTimer.Start();
 			CompositionTarget.Rendering += CompositionTarget_Rendering;
 
 			this.Width = MAP_WIDTH;
@@ -61,16 +68,41 @@ namespace MovingEngine
 			pnlPlayer.Visibility = Visibility.Hidden;
 		}
 
+		private void MainTimer_Tick(object sender, EventArgs e)
+		{
+
+			Random r = new Random(DateTime.Now.GetHashCode());
+			BaseEnemy s = new BaseEnemy();
+			double left = r.Next(-20, (int)(this.Width + 20.0));
+			s.Pos = new Point(left, -20);
+			Canvas.SetLeft(s.UiImage, left);
+			Canvas.SetTop(s.UiImage, -20);
+			movingEnemies.Add(s);
+			mainCanvas.Children.Add(s.UiImage);
+		}
+
 		private void CompositionTarget_Rendering(object sender, EventArgs e)
 		{
 			if (gamePause) return;
 			HandlePlayerPos();
+			HandlePlayerBoard();
 			CalculateMovingObjects();
 			CalculateFire();
 			RefreshUIElements();
 		}
 
 		#region Methods
+		private void HandlePlayerBoard()
+		{
+			if (Keyboard.IsKeyDown(Key.Tab))
+			{
+				this.mainTimer.Stop();
+				gamePause = true;
+				RefreshPlayerBoard();
+				pnlPlayer.Visibility = Visibility.Visible;
+			}
+		}
+
 		private void CalculateFire()
 		{
 			if (player1.FireContinueCount > 0)
@@ -112,6 +144,8 @@ namespace MovingEngine
 			RefreshMovingObjects(movingEnemies);
 			RefreshMovingObjects(movingExplosions);
 			RefreshMovingObjects(players);
+
+			lblHp.Width = (player1.Hp / player1.MaxHp) * borderPlayerHp.Width;
 		}
 
 		private void RefreshMovingObjects(List<IMovingElement> items)
@@ -201,7 +235,7 @@ namespace MovingEngine
 			{
 				IBaseEnemy b = e as IBaseEnemy;
 				b.MoveTo(player1.Pos);
-				if ((b.Pos - player1.Pos).Length < b.Speed)
+				if ((b.Pos - player1.Pos).Length < b.Speed + 20)
 				{
 					if (!player1.IsDamaging)
 					{
@@ -220,6 +254,8 @@ namespace MovingEngine
 		private void RefreshPlayerBoard()
 		{
 			lblPlayerHp.Content = player1.Hp;
+			lblPlayerExp.Content = player1.Exp;
+			lblPlayerLevel.Content = player1.Level;
 		}
 		#endregion
 
@@ -233,34 +269,13 @@ namespace MovingEngine
 		{
 			fireOn = false;
 		}
-
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			Random r = new Random(DateTime.Now.GetHashCode());
-			BaseEnemy s = new BaseEnemy();
-			double left = r.Next(-20, (int)(this.Width + 20.0));
-			s.Pos = new Point(left, -20);
-			Canvas.SetLeft(s.UiImage, left);
-			Canvas.SetTop(s.UiImage, -20);
-			movingEnemies.Add(s);
-			mainCanvas.Children.Add(s.UiImage);
-		}
-
-		private void mainCanvas_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Tab)
-			{
-				gamePause = !gamePause;
-				if (gamePause)
-				{
-					RefreshPlayerBoard();
-					pnlPlayer.Visibility = Visibility.Visible;
-				}
-				else
-					pnlPlayer.Visibility = Visibility.Hidden;
-			}
-		}
-
 		#endregion
+
+		private void btnCloseBoard_Click(object sender, RoutedEventArgs e)
+		{
+			pnlPlayer.Visibility = Visibility.Hidden;
+			gamePause = false;
+			mainTimer.Start();
+		}
 	}
 }
