@@ -11,9 +11,9 @@ namespace MovingEngine.MovingObjects.Enemies
 {
 	public class BaseEnemy : LivingElement, IBaseEnemy
 	{
-		private int score = 0;
-		private int exp = 0;
-		private int coin = 0;
+		protected int score = 0;
+		protected int exp = 0;
+		protected int coin = 0;
 
 		public BaseEnemy()
 		{

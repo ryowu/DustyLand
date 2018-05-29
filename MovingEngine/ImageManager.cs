@@ -25,6 +25,10 @@ namespace MovingEngine
 		private BitmapImage explosionImage = new BitmapImage();
 		private List<CroppedBitmap> explosionBlocks = new List<CroppedBitmap>();
 
+		//Monsters
+		private BitmapImage monsterImage1 = new BitmapImage();
+		private List<CroppedBitmap> monsterBlocks1 = new List<CroppedBitmap>();
+
 		private ImageManager()
 		{
 			InitializeImageResources();
@@ -36,6 +40,11 @@ namespace MovingEngine
 			explosionImage.UriSource = new Uri("pack://application:,,,/MovingEngine;component/Resources/explosion.png");
 			explosionImage.EndInit();
 			explosionBlocks = InitializeImageBlocks(explosionImage, 4, 4, 128, 128, 0, 0);
+
+			monsterImage1.BeginInit();
+			monsterImage1.UriSource = new Uri("pack://application:,,,/MovingEngine;component/Resources/Monster01.png");
+			monsterImage1.EndInit();
+			monsterBlocks1 = InitializeImageBlocks(monsterImage1, 12, 8, 32, 32, 0, 0);
 		}
 
 		/// <summary>
@@ -61,6 +70,11 @@ namespace MovingEngine
 		public CroppedBitmap GetExplosionImage(int index)
 		{
 			return explosionBlocks[index];
+		}
+
+		public CroppedBitmap GetMonsterImage(int index)
+		{
+			return monsterBlocks1[index];
 		}
 	}
 }

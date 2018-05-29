@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MovingObjects\Enemies\Flower.cs" />
     <Compile Include="Utility.cs" />
     <Page Include="BulletsCounter.xaml">
       <SubType>Designer</SubType>
@@ -123,6 +124,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\explosion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\drag_es__1.png" />
+    <Resource Include="Resources\FCVPeid.png" />
+    <Resource Include="Resources\hojikasmonsters.png" />
+    <Resource Include="Resources\Monster01.png" />
+    <Resource Include="Resources\monster3_20120604_1077492425.png" />
+    <Resource Include="Resources\mostri1.png" />
+    <Resource Include="Resources\vinekillers-and-small-plants.png" />
+    <Resource Include="Resources\WybuurU.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

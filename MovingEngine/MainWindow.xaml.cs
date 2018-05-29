@@ -46,11 +46,13 @@ namespace MovingEngine
 
 		private DispatcherTimer mainTimer = new DispatcherTimer();
 
-
+		private int timeLine = 0;
 
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			
 
 			mainTimer.Interval = new TimeSpan(0, 0, 0, 0, 2000);
 			mainTimer.Tick += MainTimer_Tick;
@@ -70,9 +72,19 @@ namespace MovingEngine
 
 		private void MainTimer_Tick(object sender, EventArgs e)
 		{
-
+			timeLine++;
 			Random r = new Random(DateTime.Now.GetHashCode());
-			BaseEnemy s = new BaseEnemy();
+
+			IMovingElement s = null;
+			if (timeLine < 5)
+			{
+				s = new BaseEnemy();
+			}
+			else
+			{
+				s = new Flower();
+			}
+
 			double left = r.Next(-20, (int)(this.Width + 20.0));
 			s.Pos = new Point(left, -20);
 			Canvas.SetLeft(s.UiImage, left);
@@ -267,6 +279,9 @@ namespace MovingEngine
 			lblPlayerHp.Content = player1.Hp.ToString("F");
 			lblPlayerExp.Content = string.Format("{0}/{1}", player1.Exp, player1.CurrentLevelExp);
 			lblPlayerLevel.Content = player1.Level;
+			lblPlayerAtk.Content = player1.Atk.ToString("F");
+			lblPlayerDef.Content = player1.Def.ToString("F");
+			lblPlayerSpeed.Content = player1.Speed.ToString("F");
 		}
 		#endregion
 
