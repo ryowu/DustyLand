@@ -29,6 +29,7 @@ namespace MovingEngine
 		private Player player1 = new Player(MAP_WIDTH, MAP_HEIGHT);
 		private List<IMovingElement> movingBullets = new List<IMovingElement>();
 		private List<IMovingElement> movingEnemies = new List<IMovingElement>();
+		private List<IMovingElement> movingEnemiesBullets = new List<IMovingElement>();
 		private List<IMovingElement> movingExplosions = new List<IMovingElement>();
 		private List<IMovingElement> players = new List<IMovingElement>();
 
@@ -52,7 +53,7 @@ namespace MovingEngine
 		{
 			InitializeComponent();
 
-			
+
 
 			mainTimer.Interval = new TimeSpan(0, 0, 0, 0, 2000);
 			mainTimer.Tick += MainTimer_Tick;
@@ -80,9 +81,13 @@ namespace MovingEngine
 			{
 				s = new BaseEnemy();
 			}
-			else
+			else if (timeLine < 10)
 			{
 				s = new Flower();
+			}
+			else
+			{
+				s = new DragonGreen();
 			}
 
 			double left = r.Next(-20, (int)(this.Width + 20.0));
@@ -154,6 +159,7 @@ namespace MovingEngine
 		{
 			RefreshMovingObjects(movingBullets);
 			RefreshMovingObjects(movingEnemies);
+			RefreshMovingObjects(movingEnemiesBullets);
 			RefreshMovingObjects(movingExplosions);
 			RefreshMovingObjects(players);
 			RefreshHeaderPanel();
@@ -229,7 +235,7 @@ namespace MovingEngine
 					movingEnemies.ForEach(enemy =>
 					{
 						IBaseEnemy b = enemy as IBaseEnemy;
-						if (!b.CanBeRemoved && (b.Pos - e.Pos).Length < (e.Speed + 5)) //calc bullet width
+						if (!b.CanBeRemoved && (b.Pos - e.Pos).Length < (e.Speed + b.Radius)) //calc bullet width
 						{
 							b.Hp -= player1.Atk;
 							e.CanBeRemoved = true;
@@ -257,14 +263,22 @@ namespace MovingEngine
 			movingEnemies.ForEach(e =>
 			{
 				IBaseEnemy b = e as IBaseEnemy;
-				b.MoveTo(player1.Pos);
-				if ((b.Pos - player1.Pos).Length < b.Speed + 20)
+				List<EnemyBullet> bullets_e = b.Action(mainCanvas, player1);
+				//Add new enemy bullets into the map
+				if (bullets_e != null)
 				{
-					if (!player1.IsDamaging)
-					{
-						player1.Hp -= b.Atk;
-						player1.IsDamaging = true;
-					}
+					movingEnemiesBullets.AddRange(bullets_e);
+				}
+			});
+
+			movingEnemiesBullets.ForEach(e =>
+			{
+				EnemyBullet b = e as EnemyBullet;
+				b.Move();
+				if ((b.Pos - player1.Pos).Length < b.Speed + 25)
+				{
+					player1.Hp -= b.Damage;
+					player1.IsDamaging = true;
 				}
 
 			});

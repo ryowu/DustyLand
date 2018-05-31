@@ -54,7 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MovingObjects\Enemies\DragonGreen.cs" />
     <Compile Include="MovingObjects\Enemies\Flower.cs" />
+    <Compile Include="MovingObjects\EnemyBullet.cs" />
     <Compile Include="Utility.cs" />
     <Page Include="BulletsCounter.xaml">
       <SubType>Designer</SubType>
@@ -134,6 +136,12 @@
     <Resource Include="Resources\mostri1.png" />
     <Resource Include="Resources\vinekillers-and-small-plants.png" />
     <Resource Include="Resources\WybuurU.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\commonbullet.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\blackboard-free-ppt-backgrounds-for-your-powerpoint-templates-of-powerpoint-blackboard-background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

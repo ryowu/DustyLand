@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace MovingEngine.MovingObjects.Enemies
 {
@@ -10,6 +12,8 @@ namespace MovingEngine.MovingObjects.Enemies
 		int Score { get; set; }
 		int Exp { get; set; }
 		int Coin { get; set; }
-		void MoveTo(Point target);
+
+		double Radius { get; set; }
+		List<EnemyBullet> Action(Canvas mainCanvas, Player player);
 	}
 }

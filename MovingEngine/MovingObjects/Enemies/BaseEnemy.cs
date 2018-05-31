@@ -15,12 +15,15 @@ namespace MovingEngine.MovingObjects.Enemies
 		protected int exp = 0;
 		protected int coin = 0;
 
+		protected double radiuis;
+
 		public BaseEnemy()
 		{
 			this.speed = 0.3;
 			this.atk = 1;
 			this.def = 2;
 			this.hp = 10;
+			this.radiuis = 25;
 			this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/Slime.png"));
 			this.uiImage.Width = 50;
 			this.uiImage.Height = 50;
@@ -34,8 +37,23 @@ namespace MovingEngine.MovingObjects.Enemies
 		public int Score { get => score; set => score = value; }
 		public int Exp { get => exp; set => exp = value; }
 		public int Coin { get => coin; set => coin = value; }
+		public double Radius { get => radiuis; set => radiuis = value; }
 
-		public void MoveTo(Point target)
+		public virtual List<EnemyBullet> Action(Canvas mainCanvas, Player player)
+		{
+			MoveTo(player.Pos);
+			if ((pos - player.Pos).Length < speed + 20)
+			{
+				if (!player.IsDamaging)
+				{
+					player.Hp -= atk;
+					player.IsDamaging = true;
+				}
+			}
+			return null;
+		}
+
+		private void MoveTo(Point target)
 		{
 			if (!this.canBeRemoved)
 			{
