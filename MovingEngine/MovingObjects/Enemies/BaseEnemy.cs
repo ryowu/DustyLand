@@ -53,7 +53,7 @@ namespace MovingEngine.MovingObjects.Enemies
 			return null;
 		}
 
-		private void MoveTo(Point target)
+		protected void MoveTo(Point target)
 		{
 			if (!this.canBeRemoved)
 			{

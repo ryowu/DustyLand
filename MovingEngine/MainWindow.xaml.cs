@@ -79,7 +79,13 @@ namespace MovingEngine
 			IMovingElement s = null;
 			if (timeLine < 5)
 			{
-				s = new BaseEnemy();
+				//s = new BaseEnemy();
+				s = new DragonGreen();
+
+				////////////////////////////////
+				mainTimer.Stop();
+
+
 			}
 			else if (timeLine < 10)
 			{
@@ -279,8 +285,9 @@ namespace MovingEngine
 				{
 					player1.Hp -= b.Damage;
 					player1.IsDamaging = true;
+					b.CanBeRemoved = true;
 				}
-
+				b.CheckBorder(MAP_WIDTH, MAP_HEIGHT);
 			});
 
 			movingExplosions.ForEach(e => e.Move());

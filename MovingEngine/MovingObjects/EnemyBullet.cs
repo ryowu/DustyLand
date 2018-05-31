@@ -13,7 +13,8 @@ namespace MovingEngine.MovingObjects
 		private double damage;
 		public EnemyBullet()
 		{
-			this.speed = 8;
+			this.speed = 4;
+			this.damage = 2;
 			this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/commonbullet.gif"));
 			this.uiImage.Width = 10;
 			this.uiImage.Height = 10;

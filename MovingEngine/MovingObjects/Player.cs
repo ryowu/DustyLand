@@ -43,7 +43,7 @@ namespace MovingEngine.MovingObjects
 			this.atk = 5;
 			this.def = 3;
 			this.speed = 1.5;
-			this.pos = new Point(200, 100);
+			this.pos = new Point(500, 400);
 			this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/Player.png"));
 			this.uiImage.Width = 30;
 			this.uiImage.Height = 30;
