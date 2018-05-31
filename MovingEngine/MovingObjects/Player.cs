@@ -14,12 +14,12 @@ namespace MovingEngine.MovingObjects
 		private double width_range = 0;
 		private double height_range = 0;
 
-		private int fire_continue_max = 20;
-		private int fireContinueCount = 20;
+		private int fire_continue_max = 10;
+		private int fireContinueCount = 10;
 		private int bullets = 0;
 		private int maxBullets = 10;
 		private int reloadTime = 0;
-		private int maxReloadTime = 120;
+		private int maxReloadTime = 0;
 
 		private bool isDamaging = false;
 		private int damagingResistTime = 70;
@@ -38,15 +38,15 @@ namespace MovingEngine.MovingObjects
 		{
 			this.width_range = width_r;
 			this.height_range = height_r;
-			this.hp = 32;
+			this.hp = 332;
 			this.maxHp = 32;
 			this.atk = 5;
 			this.def = 3;
 			this.speed = 1.5;
 			this.pos = new Point(500, 400);
-			this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/Player.png"));
-			this.uiImage.Width = 30;
-			this.uiImage.Height = 30;
+			this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/spaceship_sprite.png"));
+			this.uiImage.Width = 50;
+			this.uiImage.Height = 50;
 			Canvas.SetZIndex(this.uiImage, Layers.VERY_FRONT);
 
 

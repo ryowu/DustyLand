@@ -80,8 +80,8 @@ namespace MovingEngine
 			if (timeLine < 5)
 			{
 				//s = new BaseEnemy();
-				s = new DragonGreen();
-
+				s = new Boss01();
+				//s = new DragonGreen();
 				////////////////////////////////
 				mainTimer.Stop();
 
@@ -96,10 +96,11 @@ namespace MovingEngine
 				s = new DragonGreen();
 			}
 
-			double left = r.Next(-20, (int)(this.Width + 20.0));
-			s.Pos = new Point(left, -20);
+			//double left = r.Next(-20, (int)(this.Width + 20.0));
+			double left = 600;
+			s.Pos = new Point(left, 300);
 			Canvas.SetLeft(s.UiImage, left);
-			Canvas.SetTop(s.UiImage, -20);
+			Canvas.SetTop(s.UiImage, 300);
 			movingEnemies.Add(s);
 			mainCanvas.Children.Add(s.UiImage);
 		}
@@ -201,11 +202,12 @@ namespace MovingEngine
 
 		private void Fire()
 		{
-			Point p = Mouse.GetPosition(mainCanvas);
 			Bullet bullet = new Bullet();
 			bullet.Pos = new Point(player1.Pos.X, player1.Pos.Y);
-			Vector v = p - player1.Pos;
-			bullet.Vec = v / (v.Length / bullet.Speed);
+			//Point p = Mouse.GetPosition(mainCanvas);
+			//Vector v = p - player1.Pos;
+			//			bullet.Vec = v / (v.Length / bullet.Speed);
+			bullet.Vec = new Vector(0, -8);
 			Canvas.SetLeft(bullet.UiImage, bullet.Pos.X);
 			Canvas.SetTop(bullet.UiImage, bullet.Pos.Y);
 

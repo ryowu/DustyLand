@@ -9,7 +9,7 @@
     <Grid>
         <Canvas x:Name="mainCanvas" MouseDown="mainCanvas_MouseDown" MouseUp="mainCanvas_MouseUp" Margin="0,30,0,0">
             <Canvas.Background>
-                <ImageBrush ImageSource="Resources/blackboard-free-ppt-backgrounds-for-your-powerpoint-templates-of-powerpoint-blackboard-background.jpg"/>
+                <ImageBrush ImageSource="Resources/universe.png" Stretch="None"/>
             </Canvas.Background>
             <GroupBox x:Name="pnlPlayer" Header="玩家数据" Height="434" Canvas.Left="10" Canvas.Top="87" Width="727" Background="#FFF1F1F1" Panel.ZIndex="200">
                 <Grid >
