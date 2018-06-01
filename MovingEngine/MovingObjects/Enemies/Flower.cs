@@ -15,7 +15,7 @@ namespace MovingEngine.MovingObjects.Enemies
 			this.atk = 2;
 			this.def = 3;
 			this.hp = 12;
-			this.radiuis = 25;
+			this.radius = 25;
 			this.uiImage.Source = ImageManager.Instance.GetMonsterImage(0);
 			this.uiImage.Width = 50;
 			this.uiImage.Height = 50;

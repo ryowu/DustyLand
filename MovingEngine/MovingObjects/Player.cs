@@ -42,9 +42,11 @@ namespace MovingEngine.MovingObjects
 			this.maxHp = 32;
 			this.atk = 5;
 			this.def = 3;
-			this.speed = 1.5;
-			this.pos = new Point(500, 400);
-			this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/spaceship_sprite.png"));
+			this.speed = 2.5;
+			this.pos = new Point(400, 700);
+			this.radius = 10;
+			//this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/spaceship_sprite.png"));
+			this.uiImage.Source = ImageManager.Instance.GetMonsterImage(89);
 			this.uiImage.Width = 50;
 			this.uiImage.Height = 50;
 			Canvas.SetZIndex(this.uiImage, Layers.VERY_FRONT);

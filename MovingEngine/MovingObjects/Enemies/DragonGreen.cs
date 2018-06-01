@@ -19,7 +19,7 @@ namespace MovingEngine.MovingObjects.Enemies
 			this.atk = 5;
 			this.def = 4;
 			this.hp = 15;
-			this.radiuis = 25;
+			this.radius = 25;
 			this.uiImage.Source = ImageManager.Instance.GetMonsterImage(3);
 			this.uiImage.Width = 50;
 			this.uiImage.Height = 50;
@@ -37,7 +37,7 @@ namespace MovingEngine.MovingObjects.Enemies
 
 			if (fireDuration < 0)
 			{
-				EnemyBullet eb = new EnemyBullet();
+				EnemyBulletSmall eb = new EnemyBulletSmall();
 				eb.Pos = this.pos;
 				Vector v = player.Pos - this.pos;
 				eb.Vec = v / (v.Length / eb.Speed);

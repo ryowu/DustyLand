@@ -58,6 +58,8 @@
     <Compile Include="MovingObjects\Enemies\DragonGreen.cs" />
     <Compile Include="MovingObjects\Enemies\Flower.cs" />
     <Compile Include="MovingObjects\EnemyBullet.cs" />
+    <Compile Include="MovingObjects\EnemyBulletMiddle.cs" />
+    <Compile Include="MovingObjects\EnemyBulletSmall.cs" />
     <Compile Include="Utility.cs" />
     <Page Include="BulletsCounter.xaml">
       <SubType>Designer</SubType>
@@ -75,7 +77,7 @@
       <DependentUpon>BulletsCounter.xaml</DependentUpon>
     </Compile>
     <Compile Include="ImageManager.cs" />
-    <Compile Include="MovingObjects\Bullet.cs" />
+    <Compile Include="MovingObjects\BulletSmall.cs" />
     <Compile Include="MovingObjects\Enemies\BaseEnemy.cs" />
     <Compile Include="MovingObjects\Enemies\IBaseEnemy.cs" />
     <Compile Include="MovingObjects\Enums.cs" />
@@ -152,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\spaceship_sprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\allbullets.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

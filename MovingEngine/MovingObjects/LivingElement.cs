@@ -12,7 +12,7 @@ namespace MovingEngine.MovingObjects
 		protected double hp;
 		protected double atk;
 		protected double def;
-
+		protected double radius;
 		protected double maxHp;
 
 		public double Hp
@@ -28,5 +28,6 @@ namespace MovingEngine.MovingObjects
 		public double Atk { get => atk; set => atk = value; }
 		public double Def { get => def; set => def = value; }
 		public double MaxHp { get => maxHp; set => maxHp = value; }
+		public double Radius { get => radius; set => radius = value; }
 	}
 }

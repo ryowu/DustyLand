@@ -41,8 +41,8 @@ namespace MovingEngine
 
 		private bool isReloading = false;
 
-		private const double MAP_WIDTH = 1200;
-		private const double MAP_HEIGHT = 700;
+		private const double MAP_WIDTH = 800;
+		private const double MAP_HEIGHT = 900;
 
 
 		private DispatcherTimer mainTimer = new DispatcherTimer();
@@ -97,10 +97,10 @@ namespace MovingEngine
 			}
 
 			//double left = r.Next(-20, (int)(this.Width + 20.0));
-			double left = 600;
-			s.Pos = new Point(left, 300);
+			double left = 400;
+			s.Pos = new Point(left, -20);
 			Canvas.SetLeft(s.UiImage, left);
-			Canvas.SetTop(s.UiImage, 300);
+			Canvas.SetTop(s.UiImage, -20);
 			movingEnemies.Add(s);
 			mainCanvas.Children.Add(s.UiImage);
 		}
@@ -202,8 +202,8 @@ namespace MovingEngine
 
 		private void Fire()
 		{
-			Bullet bullet = new Bullet();
-			bullet.Pos = new Point(player1.Pos.X, player1.Pos.Y);
+			BulletSmall bullet = new BulletSmall();
+			bullet.Pos = new Point(player1.Pos.X + 3, player1.Pos.Y);
 			//Point p = Mouse.GetPosition(mainCanvas);
 			//Vector v = p - player1.Pos;
 			//			bullet.Vec = v / (v.Length / bullet.Speed);
@@ -283,7 +283,7 @@ namespace MovingEngine
 			{
 				EnemyBullet b = e as EnemyBullet;
 				b.Move();
-				if ((b.Pos - player1.Pos).Length < b.Speed + 25)
+				if (!player1.IsDamaging && (b.Pos - player1.Pos).Length < b.Speed + player1.Radius)
 				{
 					player1.Hp -= b.Damage;
 					player1.IsDamaging = true;

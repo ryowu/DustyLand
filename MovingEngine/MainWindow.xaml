@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovingEngine"
         mc:Ignorable="d"
-        Title="MainWindow" Height="691.957" Width="1091.694" FontFamily="Microsoft YaHei" FontSize="10" >
+        Title="MainWindow" Height="987.333" Width="652.748" FontFamily="Microsoft YaHei" FontSize="10" >
     <Grid>
         <Canvas x:Name="mainCanvas" MouseDown="mainCanvas_MouseDown" MouseUp="mainCanvas_MouseUp" Margin="0,30,0,0">
             <Canvas.Background>
-                <ImageBrush ImageSource="Resources/universe.png" Stretch="None"/>
+                <ImageBrush ImageSource="Resources/universe.png"/>
             </Canvas.Background>
             <GroupBox x:Name="pnlPlayer" Header="玩家数据" Height="434" Canvas.Left="10" Canvas.Top="87" Width="727" Background="#FFF1F1F1" Panel.ZIndex="200">
                 <Grid >

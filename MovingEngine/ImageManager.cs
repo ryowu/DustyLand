@@ -21,13 +21,16 @@ namespace MovingEngine
 			}
 		}
 
-		//All towers
+		//Explosion
 		private BitmapImage explosionImage = new BitmapImage();
 		private List<CroppedBitmap> explosionBlocks = new List<CroppedBitmap>();
 
 		//Monsters
 		private BitmapImage monsterImage1 = new BitmapImage();
 		private List<CroppedBitmap> monsterBlocks1 = new List<CroppedBitmap>();
+
+		//All bullets
+		private BitmapImage allBullets = new BitmapImage();
 
 		private ImageManager()
 		{
@@ -45,6 +48,10 @@ namespace MovingEngine
 			monsterImage1.UriSource = new Uri("pack://application:,,,/MovingEngine;component/Resources/Monster01.png");
 			monsterImage1.EndInit();
 			monsterBlocks1 = InitializeImageBlocks(monsterImage1, 12, 8, 32, 32, 0, 0);
+
+			allBullets.BeginInit();
+			allBullets.UriSource = new Uri("pack://application:,,,/MovingEngine;component/Resources/allbullets.png");
+			allBullets.EndInit();
 		}
 
 		/// <summary>
@@ -75,6 +82,11 @@ namespace MovingEngine
 		public CroppedBitmap GetMonsterImage(int index)
 		{
 			return monsterBlocks1[index];
+		}
+
+		public CroppedBitmap GetBulletImage(Int32Rect rect)
+		{
+			return new CroppedBitmap(allBullets, rect);
 		}
 	}
 }
