@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovingEngine.MovingObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,8 @@ namespace MovingEngine
 		//All bullets
 		private BitmapImage allBullets = new BitmapImage();
 
+		private List<CroppedBitmap> enemyBullets = new List<CroppedBitmap>();
+
 		private ImageManager()
 		{
 			InitializeImageResources();
@@ -52,6 +55,9 @@ namespace MovingEngine
 			allBullets.BeginInit();
 			allBullets.UriSource = new Uri("pack://application:,,,/MovingEngine;component/Resources/allbullets.png");
 			allBullets.EndInit();
+			enemyBullets.Add(GetBulletImage(new Int32Rect(0, 0, 10, 10)));
+			enemyBullets.Add(GetBulletImage(new Int32Rect(208, 90, 25, 25)));
+			enemyBullets.Add(GetBulletImage(new Int32Rect(208, 90, 25, 25)));
 		}
 
 		/// <summary>
@@ -84,9 +90,14 @@ namespace MovingEngine
 			return monsterBlocks1[index];
 		}
 
-		public CroppedBitmap GetBulletImage(Int32Rect rect)
+		private CroppedBitmap GetBulletImage(Int32Rect rect)
 		{
 			return new CroppedBitmap(allBullets, rect);
+		}
+
+		public CroppedBitmap GetBulletImage(BulletSize size)
+		{
+			return enemyBullets[(int)size];
 		}
 	}
 }

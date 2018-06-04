@@ -14,4 +14,11 @@ namespace MovingEngine.MovingObjects
 		public const int BACK = 25;
 		public const int VERY_BACK = 0;
 	}
+
+	public enum BulletSize
+	{
+		Small = 0,
+		Middle = 1,
+		Big = 2
+	}
 }

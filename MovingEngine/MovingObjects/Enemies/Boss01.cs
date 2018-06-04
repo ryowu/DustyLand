@@ -156,11 +156,13 @@ namespace MovingEngine.MovingObjects.Enemies
 		private List<EnemyBullet> CreateShotgunBullets(Canvas mainCanvas)
 		{
 			List<EnemyBullet> bullets = new List<EnemyBullet>();
-			bullets.Add(GetRotateBullet(mainCanvas, new Vector(0, 5), 0));
-			bullets.Add(GetRotateBullet(mainCanvas, new Vector(0, 5), -10));
-			bullets.Add(GetRotateBullet(mainCanvas, new Vector(0, 5), 10));
-			bullets.Add(GetRotateBullet(mainCanvas, new Vector(0, 5), -20));
-			bullets.Add(GetRotateBullet(mainCanvas, new Vector(0, 5), 20));
+			Vector v = new Vector(0, 5);
+			int angle = 3;
+			bullets.Add(GetRotateBullet(mainCanvas, v, 0));
+			bullets.Add(GetRotateBullet(mainCanvas, v, -2 * angle));
+			bullets.Add(GetRotateBullet(mainCanvas, v, 2 * angle));
+			bullets.Add(GetRotateBullet(mainCanvas, v, -4 * angle));
+			bullets.Add(GetRotateBullet(mainCanvas, v, 4 * angle));
 			return bullets;
 		}
 

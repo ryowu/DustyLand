@@ -16,7 +16,7 @@ namespace MovingEngine.MovingObjects
 		{
 			this.speed = 4;
 			this.damage = 2;
-			this.uiImage.Source = ImageManager.Instance.GetBulletImage(new Int32Rect(208, 90, 25, 25));
+			this.uiImage.Source = ImageManager.Instance.GetBulletImage(BulletSize.Middle);
 			this.uiImage.Width = 25;
 			this.uiImage.Height = 25;
 			Canvas.SetZIndex(this.uiImage, Layers.BACK);

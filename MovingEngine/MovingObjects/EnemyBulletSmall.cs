@@ -14,7 +14,8 @@ namespace MovingEngine.MovingObjects
 		{
 			this.speed = 4;
 			this.damage = 2;
-			this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/commonbullet.gif"));
+			//this.uiImage.Source = new BitmapImage(new Uri("pack://application:,,,/MovingEngine;component/Resources/commonbullet.gif"));
+			this.uiImage.Source = ImageManager.Instance.GetBulletImage(BulletSize.Small);
 			this.uiImage.Width = 10;
 			this.uiImage.Height = 10;
 			Canvas.SetZIndex(this.uiImage, Layers.BACK);
