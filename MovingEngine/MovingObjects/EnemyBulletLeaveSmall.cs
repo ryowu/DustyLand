@@ -4,19 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 
 namespace MovingEngine.MovingObjects
 {
-    public class EnemyBulletSmall : EnemyBullet
+	public class EnemyBulletLeaveSmall : EnemyBullet
 	{
-		public EnemyBulletSmall()
+		public EnemyBulletLeaveSmall()
 		{
 			this.speed = 4;
 			this.damage = 2;
-			this.uiImage.Source = ImageManager.Instance.GetBulletImage(BulletSize.Small);
-			this.uiImage.Width = 10;
-			this.uiImage.Height = 10;
+			this.uiImage.Source = ImageManager.Instance.GetBulletImage(BulletSize.LeaveSmall);
+			this.uiImage.Width = 8;
+			this.uiImage.Height = 12;
 			Canvas.SetZIndex(this.uiImage, Layers.BACK);
 		}
 	}

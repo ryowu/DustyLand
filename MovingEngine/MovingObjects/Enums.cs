@@ -19,6 +19,7 @@ namespace MovingEngine.MovingObjects
 	{
 		Small = 0,
 		Middle = 1,
-		Big = 2
+		LeaveSmall = 2,
+		Big = 3
 	}
 }

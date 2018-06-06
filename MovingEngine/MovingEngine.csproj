@@ -58,6 +58,7 @@
     <Compile Include="MovingObjects\Enemies\DragonGreen.cs" />
     <Compile Include="MovingObjects\Enemies\Flower.cs" />
     <Compile Include="MovingObjects\EnemyBullet.cs" />
+    <Compile Include="MovingObjects\EnemyBulletLeaveSmall.cs" />
     <Compile Include="MovingObjects\EnemyBulletMiddle.cs" />
     <Compile Include="MovingObjects\EnemyBulletSmall.cs" />
     <Compile Include="Utility.cs" />

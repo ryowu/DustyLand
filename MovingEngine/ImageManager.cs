@@ -57,7 +57,9 @@ namespace MovingEngine
 			allBullets.EndInit();
 			enemyBullets.Add(GetBulletImage(new Int32Rect(0, 0, 10, 10)));
 			enemyBullets.Add(GetBulletImage(new Int32Rect(208, 90, 25, 25)));
+			enemyBullets.Add(GetBulletImage(new Int32Rect(553, 0, 8, 12)));
 			enemyBullets.Add(GetBulletImage(new Int32Rect(208, 90, 25, 25)));
+			
 		}
 
 		/// <summary>

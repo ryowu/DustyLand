@@ -243,7 +243,7 @@ namespace MovingEngine
 					movingEnemies.ForEach(enemy =>
 					{
 						IBaseEnemy b = enemy as IBaseEnemy;
-						if (!b.CanBeRemoved && (b.Pos - e.Pos).Length < (e.Speed + b.Radius)) //calc bullet width
+						if (!b.CanBeRemoved && (b.Pos - e.Pos).Length < b.Radius) //calc bullet width
 						{
 							b.Hp -= player1.Atk;
 							e.CanBeRemoved = true;
@@ -283,7 +283,7 @@ namespace MovingEngine
 			{
 				EnemyBullet b = e as EnemyBullet;
 				b.Move();
-				if (!player1.IsDamaging && (b.Pos - player1.Pos).Length < b.Speed + player1.Radius)
+				if (!player1.IsDamaging && (b.Pos - player1.Pos).Length < player1.Radius)
 				{
 					player1.Hp -= b.Damage;
 					player1.IsDamaging = true;
